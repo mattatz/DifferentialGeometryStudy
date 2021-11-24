@@ -1,0 +1,33 @@
+[package]
+name = "rust-diff-geom"
+version = "0.1.0"
+authors = ["mattatz <masatatsu.nakamura@gmail.com>"]
+edition = "2018"
+resolver = "2"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+console_error_panic_hook = { version = "0.1.6", optional = true }
+fasteval = "0.2.4"
+js-sys = "0.3.51"
+nalgebra = "0.29.0"
+wasm-bindgen = "0.2.74"
+wee_alloc = { version = "0.4.5", optional = true }
+
+[dependencies.web-sys]
+version = "0.3.44"
+features = [
+  'console',
+]
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.13"
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"
