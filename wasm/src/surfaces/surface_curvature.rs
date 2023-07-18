@@ -1,15 +1,13 @@
+use nalgebra::Point3;
+use nalgebra::Scalar;
+use nalgebra::Vector3;
 
-use crate::types::Vector3f;
-use crate::types::Point3f;
-
-pub struct SurfaceCurvature {
-  pub point: Point3f,
-  pub uv: (f64, f64),
-  pub normal: Vector3f,
-  pub gaussian: f64,
-  pub mean: f64,
+pub struct SurfaceCurvature<T: Scalar> {
+    pub point: Point3<T>,
+    pub uv: (T, T),
+    pub normal: Vector3<T>,
+    pub gaussian: T,
+    pub mean: T,
 }
 
-impl SurfaceCurvature {
-}
-
+impl<T: Scalar> SurfaceCurvature<T> {}

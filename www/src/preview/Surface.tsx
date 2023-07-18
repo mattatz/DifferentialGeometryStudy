@@ -35,9 +35,9 @@ const Surface = (props: {
     const pcount = tessellation.points_count();
     const icount = tessellation.indices_count();
 
-    const pArray = new Float64Array(memory.buffer, tessellation.points(), pcount * stride);
-    const nArray = new Float64Array(memory.buffer, tessellation.normals(), pcount * stride);
-    const cArray = new Float64Array(
+    const pArray = new Float32Array(memory.buffer, tessellation.points(), pcount * stride);
+    const nArray = new Float32Array(memory.buffer, tessellation.normals(), pcount * stride);
+    const cArray = new Float32Array(
       memory.buffer,
       curvature === Curvature.Gaussian ? tessellation.gauss_curvature() : tessellation.mean_curvature(),
       pcount
@@ -69,13 +69,13 @@ const Surface = (props: {
       }
     }
 
-    const position = new Float32BufferAttribute(new Float32Array(pArray), 3);
-    const normal = new Float32BufferAttribute(new Float32Array(nArray), 3);
+    const position = new Float32BufferAttribute(pArray, 3);
+    const normal = new Float32BufferAttribute(nArray, 3);
     const iArray = new Int32Array(memory.buffer, tessellation.indices(), icount);
 
     const g = new BufferGeometry();
     g.setAttribute('position', position);
-    // g.setAttribute('normal', normal);
+    g.setAttribute('normal', normal);
     g.setAttribute('color', new Float32BufferAttribute(colors, 3));
     g.setIndex(Array.from(iArray));
     g.computeVertexNormals();

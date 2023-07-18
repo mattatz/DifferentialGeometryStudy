@@ -1,5 +1,4 @@
-
-use nalgebra::{Point2, Point3, Vector3, Vector4, Matrix2, Matrix2x1};
+use nalgebra::{Matrix2, Matrix2x1, Point2, Point3, Vector3, Vector4};
 
 pub type Point2f = Point2<f64>;
 pub type Point3f = Point3<f64>;
