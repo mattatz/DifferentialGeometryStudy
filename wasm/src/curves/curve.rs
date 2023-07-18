@@ -63,7 +63,7 @@ pub trait Curve {
         let count: usize = (1.0 / delta) as usize;
         let parameters = (0..count).map(|i| i as f64 / (count - 1) as f64);
         let frames: Vec<FrenetFrame> = parameters.clone().map(|s| self.frame_at(s)).collect();
-        let curvatures: Vec<f64> = parameters.map(|s| self.curvature_at(s)).collect();
+        let curvatures: Vec<f32> = parameters.map(|s| self.curvature_at(s) as f32).collect();
         CurveTessellation::new(frames, curvatures)
     }
 

@@ -20,7 +20,6 @@ const Surface = (props: {
   arrowLength: number;
 }): JSX.Element => {
   const { tessellation, surface, curvature, arrow, arrowLength, isoCurve } = props;
-  //const [pointsGeometry, setPointsGeometry] = useState<BufferGeometry>(new BufferGeometry());
   const [geometry, setGeometry] = useState<BufferGeometry>(new BufferGeometry());
   const [isNormal, setIsNormal] = useState<boolean>(false);
   const [arrowOrigin, setArrowOrigin] = useState<Vector3[]>([]);

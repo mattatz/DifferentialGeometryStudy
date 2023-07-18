@@ -23,15 +23,14 @@ const FrenetFrames = (props: {
     const len = count;
     const stride = edge.stride();
 
-    const point = new Float64Array(memory.buffer, edge.points(), len * stride);
-    const tangent = new Float64Array(memory.buffer, edge.tangents(), len * stride);
-    const normal = new Float64Array(memory.buffer, edge.normals(), len * stride);
-    const binormal = new Float64Array(memory.buffer, edge.binormals(), len * stride);
-    const curvature = new Float64Array(memory.buffer, edge.curvatures(), len);
+    const point = new Float32Array(memory.buffer, edge.points(), len * stride);
+    const tangent = new Float32Array(memory.buffer, edge.tangents(), len * stride);
+    const normal = new Float32Array(memory.buffer, edge.normals(), len * stride);
+    const binormal = new Float32Array(memory.buffer, edge.binormals(), len * stride);
+    const curvature = new Float32Array(memory.buffer, edge.curvatures(), len);
 
     const g = new BufferGeometry();
-    const p32 = new Float32Array(point);
-    const position = new Float32BufferAttribute(p32, 3);
+    const position = new Float32BufferAttribute(point, 3);
     g.setAttribute('position', position);
     setPointsGeometry(g);
 
